@@ -1,0 +1,817 @@
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&family=Montserrat+Subrayada:wght@400;700&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 20px;
+    font-family:'montserrat' sans-serif ;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+a{
+    text-decoration: none;
+    /* display: none; */
+}
+.container{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color:black;
+    justify-content: center; 
+}
+img {
+    object-fit: cover;
+    /* border: 5px solid white; */
+}
+p{
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: black;
+    margin-top: 10px;
+    text-transform: capitalize;
+    letter-spacing: .2rem;
+    text-indent: 10px;
+    line-height: 2.5rem;
+} 
+.cta {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: transparent;
+    border: 3px solid rgba(194, 18, 88, 0.911);
+    color: rgb(247, 253, 253);
+    font-size: 2rem;
+    text-transform: capitalize;
+    transition: 1s ease-in-out;
+    transition-property: background-color, color;
+}
+
+.cta:hover {
+    color: white;
+    background-color: crimson;
+}
+/* this command apply to all class with section-title */
+.section-title {
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    letter-spacing: .2rem;
+    color: black;
+    font-weight: 100;
+    text-align: center;
+}
+
+/* to make the I in services have diffrent color from other letters */
+.section-title span {
+    color: brown;
+}
+.brand h1{
+    font-size: 2rem;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.brand h1 span{
+    color: brown;
+}
+
+/* header section */
+#header{
+    position:fixed;
+    z-index: 1000;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    height: auto;
+}
+#header .header {
+    min-height: 8vh;
+    background-color: rgba(10, 13, 91, 0.24);
+    transition: .4s ease-in background-color;
+}
+#header .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+    padding: 0 10px;
+}
+#header .nav-list ul {
+    list-style: none;
+    position: absolute;
+    background-color: rgba(6, 6, 67, 0.98);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: .6s ease left;
+}
+
+/* to make the nav bar appear when it is been click on */
+#header .nav-list ul.active {
+    left: 0;
+}
+#header .nav-list ul a{
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+    color: white;
+    padding: 20px;
+    display: block;
+    text-decoration: none;
+}
+#header .nav-list ul a::after {
+    content: attr(data-after);
+    position: absolute;
+    /* width: 100vw; */
+    transform: translate(-50%, -50%) scale(0);
+    top: 50%;
+    left: 50%;
+    color:rgba(10, 12, 83, 0.24);
+    font-size: 11rem;
+    letter-spacing: 50px;
+    z-index: -1;
+    transition: .3s ease letter-spacing;
+}
+
+#header .nav-list ul li:hover a::after {
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: initial;
+}
+
+#header .nav-list ul li:hover a{
+    color: crimson;
+}
+#header .humberger{
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+    border: 3px solid white;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+    transform: scale(.8);
+    margin-right: 30px;
+}
+
+/* to make the humberger blink */
+#header .humberger::after {
+    position:absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 3px solid white;
+    animation: humberger_puls .7s ease infinite;
+}
+#header .humberger .bar{
+    position: relative;
+    height: 2px;
+    width: 30px;
+    background-color: white;
+    z-index: -1;
+}
+#header .humberger .bar::after,
+#header .humberger .bar::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    background-color: white;
+    transition: .3s ease;
+    transition-property: top, bottom;
+}
+#header .humberger .bar::after{
+    top: 8px;
+}
+#header .humberger .bar::before {
+    bottom: 8px;
+}
+#header .humberger.active .bar::before{
+    bottom: 0;
+}
+#header .humberger.active .bar::after {
+    top: 0;
+}
+/* end of header section */
+
+/* hero section */
+#hero{
+    background-image: url(./images/soft.jpg);
+    position: relative;
+    background-size: cover;
+    background-position: top center;
+    z-index: 1;
+}
+
+.hero::after{
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: .6;
+    z-index: -1;
+}
+#hero .hero{
+    max-width: 1200px;
+    padding: 0 50px;
+    margin: 0 auto;
+    justify-content: flex-start;
+} 
+.hero h1{
+    display: block;
+    width: fit-content;
+    font-size: 3rem;
+    position: relative;
+    text-transform: capitalize;
+    color: transparent;
+    animation: text_reveal .5s ease forwards;
+    animation-delay: 1.5;  
+}
+
+/* to give it diffrent animation time */
+.hero h1:nth-child(1){
+    animation-delay: 1.5s;
+}
+.hero h1:nth-child(2) {
+    animation-delay: 2.5s;
+}
+.hero h1:nth-child(3) {
+    /* to make samuel have diffrent color */
+    animation: text_reveal_name 2s ease forwards;
+
+    animation-delay: 3.5s;
+    /* color: blue; */
+}
+
+.hero h1 span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    animation: text_reveal_box 1s ease 1s;
+    background-color: rgb(108, 7, 86);
+}
+.hero h1:nth-child(1) span{
+    animation-delay: 1s;
+}
+.hero h1:nth-child(2) span {
+    animation-delay: 2s;
+}
+.hero h1:nth-child(3) span {
+    animation-delay: 3s;
+    /* color: blue; */
+}
+
+/* end of keyframe for text animation */
+
+/* to give the nth child(3) another color after forward */
+@keyframes text_reveal_name{
+    100% {
+        color: crimson;
+    }
+}
+    /* service section */
+#services .services{
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto;
+    padding: 100px 0;
+    max-width: 1500px;
+}
+
+#services .service-top p{
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: black;
+    margin-top: 10px;
+    text-transform: capitalize;
+    letter-spacing: .3rem;
+    text-indent: 10px;
+    line-height: 2.5rem;
+    /* width: 700px; */
+}
+#services .service-buttom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-transform: capitalize;
+    color: black;
+    margin-top: 30px;
+    /* padding-bottom: 100px; */
+}
+#services .service-item{
+    justify-content: center;
+    align-items: center;
+    flex-basis: 80%;
+    flex-direction: column;
+    display: flex;
+    border-radius: 25px;
+    padding: 30px;
+    background-image: url(./new\ back.jpg);
+    background-size: cover;
+    background-position: left top;
+    background-repeat: repeat;
+    margin: 10px 20px;
+    padding: 20px;
+    position: relative;
+    width: 300px;
+    height: 280px;
+    /* background-image */
+    z-index: 1;
+}
+#services .service-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    opacity: .2;
+    z-index: -1;
+} 
+#services .service-item h2 {
+    font-size: 30px;
+    color: blue;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+#services .service-item p {
+    font-size: 20px;
+    color: black;
+    text-transform: lowercase;
+    font-weight: 100;
+    text-align: left;
+    line-height: 20px;
+    letter-spacing: 3px;
+    /* font-style: italic; */
+    font-family: 'Times New Roman', Times, serif;
+}
+#services .service-buttom .icon {
+    height: 100px;
+    width: 100px; 
+    /* position: relative; */
+    margin-bottom: 20px;
+}
+
+#services .service-buttom .icon img{
+    height: 100px;
+    /* position: absolute; */
+    width: 100px;
+    object-fit: cover
+}
+    /* end of service section */
+/* start of projects section */
+#projects .projects {
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 10px 0;
+}
+#projects .projects-header h1 {
+    margin-bottom: 30px;
+}
+#projects .all-projects {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+#projects .project-item {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 15px auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+#projects .project-info {
+    padding: 10px;
+    flex-basis: 50%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    color: white;
+}
+#projects .project-info h1 {
+    font-size: 2rem;
+    letter-spacing: .3rem;
+    font-weight: 500;
+    font-style: normal;
+}
+#projects .project-info h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-top: 10px;
+    text-transform: capitalize;
+}
+#projects .project-info  p{
+    color: white;
+    font-size: 20px;
+}
+#projects .project-img {
+    flex-basis: 50%;
+    height: 10px;
+    overflow: hidden;
+    position: relative;
+}
+#projects .project-img::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color:#29323c;
+    position: absolute;
+    opacity: .5;
+}
+#projects .project-img img {
+    transition: 0.3s ease transform;
+}
+/* to make the image hover */
+#projects .project-item:hover .project-img img{
+    transform: scale(1.1);
+}
+/* end of project section */
+
+/* About section */
+#about .about{
+    flex-direction: column-reverse;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+#about .col-left{
+    width: 250px;
+    height: 360px;
+}
+#about .col-right{
+    width: 100%;
+}
+#about .col-right h2{
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    margin-bottom: 10px;
+}
+#about .col-right p {
+    margin-bottom: 20px;
+}
+#about .cta{
+    color: black;
+    font-weight: 500;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+#about .col-left .about-img {
+    position: relative;
+    height: 100%;
+    width: 98%;
+    /* border: 9px solid white; */
+    /* z-index: 0; */
+}
+#about .col-left .about-img::after{
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 19px;
+    width: 100%;
+    height: 100%;
+    border: 10px solid red;
+    z-index: -1;
+}
+#about .about-img img {
+    height: 380px;
+    width: 250px;
+    border: 3px solid white;
+    /* margin-left: -10px; */
+}
+/* End of About section */
+
+/* contact section */
+#contact .contact{
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+#contact .contact-items{
+    width: 500px;
+}
+#contact .contact-item {
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 18px 0 #0000002c;
+    transition: .3s ease box-shadow;
+}
+#contact .contact-item:hover {
+    box-shadow: 0px 0px 5px 0 #0000002c;
+}
+
+#contact .icon{
+    width: 70px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}#contact .contact-info h1{
+    font-size: 2rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+#contact .contact-info h2 {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-weight: 300;
+}
+/* .contact-info h2:nth-child(2) {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: capitalize;
+} */
+
+/* end of contact section */
+
+/* footer */
+#footer{
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+#footer .footer{
+    min-height: 200px;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+#footer h2{
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: .2rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-transform: capitalize;
+}
+#footer .social-icon {
+    display: flex;
+    margin-bottom: 20px;
+    
+    /* margin-left: 100px; */
+}
+/* to put space between the icon */
+#footer .social-item {
+    margin:0 10px;
+}
+#footer p{
+    font-size: 20px;
+    color: white;
+    text-indent: 20px;
+    font-style: italic;
+}
+/* to make the icon black */
+#footer .social-item img{
+    transition: .3s ease filter;
+    filter:grayscale(1);
+}
+#footer .social-item img:hover {
+    filter: grayscale(0);
+}
+/* end of footer */
+
+/* keyframe for text animation */
+@keyframes humberger_puls{
+    0%{
+        opacity: 1;
+        transform:scale(1);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+@keyframes text_reveal_box {
+    50% {
+        width: 100%;
+        left: 0;
+    }
+
+    100% {
+        width: 0;
+        left: 100%;
+    }
+}
+@keyframes text_reveal {
+    100% {
+        color: white;
+    }
+}
+/* end of keyframe for text animation */
+
+/* media query for tablet size */
+@media only screen and (min-width:768px){
+    .cta{
+        font-size: 3rem;
+        padding: 20px 60px;
+    }
+    h1.section-title{
+        font-size: 5rem;
+    }
+    /* hero section */
+    #hero h1{
+        font-size: 6rem;
+    }
+    /* end of hero section */
+
+    /* service section */
+    /* to make the box into 45%  */
+    #services .service-buttom .service-item{
+        flex-basis: 45%;
+        margin: 2.5%;
+        padding-left: 50px;
+        height: 360px;
+    }
+    #services .service-top {
+        max-width: 500px;
+        margin: 0 auto;
+        }
+    /* end of service section */
+
+    /* Project section */
+    #projects .project-item{
+        flex-direction: row;
+        height: 400px;
+        width: 95%;
+        justify-content: space-evenly;
+        margin: 0;
+        border-radius: 0;
+        overflow: hidden;
+    }
+    /* to get the even/odd number reverse */
+    #projects .project-item:nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+    #projects .all-projects .project-info {
+        height: 100%;
+    }
+    #projects .all-projects .project-img {
+        height: 100%;
+        
+    }
+    /* end of Project section */
+
+    /* About section */ 
+    #about .about{
+        flex-direction: row;
+    }
+    #about .col-left {
+        width: 600px;
+        height: 400px;
+        padding-left: 60px;
+        /* overflow: visible; */
+    }
+    #about .about .col-left .about-img::after {
+        left: -25px;
+        top: 34px;
+        height: 100%;
+        width: 100%;
+        border: 10px solid crimson;
+        box-sizing: border-box;
+    }
+    #about .about-img img{
+        height: 400px;
+        width: 300px;
+        border: 7px solid white;
+        
+        /* margin-left: -10px; */
+    }
+    #about .col-right{
+        text-align: left;
+        padding: 30px;
+    }
+    #about .col-right h1{
+        text-align: left;
+    }
+    /*end of About section */
+    /* contact section */
+    #contact .contact{
+        flex-direction: column;
+        padding: 100px 0;
+        align-items: center;
+        justify-content: center;
+        min-width: 20vw;
+    }
+    #contact .contact-items {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        margin: 0;
+    }
+    #contact .contact-item{
+        width: 30%;
+        margin: 0;
+        flex-direction: row;
+    }
+    #contact .contact-item .icon {
+        height: 100px;
+        width: 100px;
+    }
+    #contact .contact-item .icon img {
+        object-fit: contain;
+    }
+    #contact .contact-item .contact-info {
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+    }
+#contact .contact-info h2 {
+    font-size: 1.1rem;
+    text-align: left;
+    left: 10px;
+}
+        /* end of contact sectiom */
+}
+/* end of media query for tablet size */
+
+
+/* destop/laptop media query view */
+@media only screen and (min-width:1200px){
+    #services .service-buttom .service-item {
+        flex-basis: 22%;
+        margin: 1.5%;
+        height: 100%;
+    }
+
+    /* to remove the humberger for destop view */
+    #header .humberger{
+        display: none;
+    }
+    #header .nav-list ul{
+        position: initial;
+        display: block;
+        height: auto;
+        width: fit-content;
+        background-color: transparent;
+    }
+    #header .nav-list ul a::after {
+        display: none;
+    }
+    #header .nav-list ul li {
+        display: inline-block;
+    }
+    #header .nav-list ul li a{
+        font-size: 22px;
+        padding-right: 0;
+    }
+    /* about section */
+    #about .about .col-left .about-img::after {
+        left: -35px;
+        top: 34px;
+        height: 98%;
+        width: 98%;
+        border: 10px solid crimson;
+    }
+    
+    #about .about-img img {
+        height: 390px;
+        width: 350px;
+        border: 10px solid white;
+        /* margin-left: -10px; */
+    }
+}
+/* end of destop/laptop media query view */

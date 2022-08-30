@@ -10,7 +10,9 @@ All the html command are been given here with starting and ending comment to sho
 4. Project Section
 5. About Me Section
 6. Contact Section
+   This section hover
 7. Footer Section
+   The social media icon hover when mouse is place on it
 
 Note: app.js is been added at the end of the index.html file to link the js to it
 
